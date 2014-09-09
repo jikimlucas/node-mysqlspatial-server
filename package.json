@@ -1,0 +1,20 @@
+{
+    "name": "node-mysqlspatial-server",
+    "description": "Node GIS Server",
+    "version": "0.0.1",
+    "private": true,
+    "contributors": [{
+      },{
+        "name": "Mano Marks",
+        "url": "https://google.com/+ManoMarks"
+      }
+      ],
+    "dependencies": {
+        "express": "3.x",
+      	"mysql": ".9",
+      	"mysql2geojson": ".1.1"
+    },
+    "scripts": {
+        "start": "node server"
+    }
+}

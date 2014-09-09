@@ -21,6 +21,7 @@ module.exports.controller = function (app) {
   // Queries shapes interesections against the countries table return GeoJSON.
   app.get('/countries/intersect', function (req, res) {
     pool.getConnection(function (err, connection) {
+      console.log(err);
       var path = req.query.path, lnglat = req.query.lnglat;
       switch (req.query.type) {
 

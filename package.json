@@ -1,20 +1,39 @@
 {
-    "name": "node-mysqlspatial-server",
-    "description": "Node GIS Server",
-    "version": "0.0.1",
-    "private": true,
-    "contributors": [{
-      },{
-        "name": "Mano Marks",
-        "url": "https://google.com/+ManoMarks"
-      }
-      ],
-    "dependencies": {
-        "express": "3.x",
-      	"mysql": ".9",
-      	"mysql2geojson": ".1.1"
-    },
-    "scripts": {
-        "start": "node server"
-    }
+  "name": "node-mysqlspatial-server",
+  "description": "Node GIS Server",
+  "version": "0.0.1",
+  "private": true,
+  "contributors": [
+    {"name":"Bill Dollins ", "email": "bill@geomusings.com"}
+    {"name":"Mano Marks", "url":"https://google.com/+ManoMarks"}],
+  "dependencies": {
+    "express": "3.x",
+    "mysql": ".9",
+    "mysql2geojson": ".1.1"
+  },
+  "scripts": {
+    "start": "node server"
+  },
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ManoMarks/node-mysqlspatial-server.git"
+  },
+  "keywords": [
+    "mysql",
+    "maps",
+    "geojson",
+    "Google",
+    "Maps",
+    "API",
+    "spatial",
+    "gis"
+  ],
+  "author": "Mano Marks, Bill Dollins",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ManoMarks/node-mysqlspatial-server/issues"
+  },
+  "homepage": "https://github.com/ManoMarks/node-mysqlspatial-server"
 }
+

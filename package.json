@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "private": true,
   "contributors": [
-    {"name":"Bill Dollins ", "email": "bill@geomusings.com"}
+    {"name":"Bill Dollins ", "email": "bill@geomusings.com"},
     {"name":"Mano Marks", "url":"https://google.com/+ManoMarks"}],
   "dependencies": {
     "express": "3.x",

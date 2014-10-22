@@ -1,34 +1,38 @@
-var express = require('express'),
-    fs = require('fs');
-
-
+8var express = require('express'),
+  fs = require('fs');
 var app = express();
 app.use(express.bodyParser());
 app.use(app.router);
 app.use(error);
+app.use(express.static(__dirname + '/'));
 
-process.on('uncaughtException', function (error) {
-   console.log(error.stack);
+/* enable CORS */
+app.all('*', function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'X-Requested-With');
+  next();
+});
+
+process.on('uncaughtException', function(error) {
+   console.error(error, error.stack);
 });
 
 // dynamically include routes (Controller)
-fs.readdirSync('./controllers').forEach(function (file) {
-  if(file.substr(-3) == '.js') {
-      route = require('./controllers/' + file);
-      route.controller(app);
+fs.readdirSync('./controllers').forEach(function(file) {
+  if (file.substr(-3) === '.js') {
+    route = require('./controllers/' + file);
+    route.controller(app);
   }
-
 });
 
 function error(err, req, res, next) {
   // log it
-  console.log(err);
-  console.error(err.stack);
+  console.log(err, err.stack);
 
   // respond with 500 "Internal Server Error".
-  res.send(500);
+  res.status(500).send('Internal Server Error');
 }
-app.use(express.static(__dirname + '/'));
 
-app.listen(3000);
+aimpp.listen(3000);
 console.log('Listening on port 3000...');
+

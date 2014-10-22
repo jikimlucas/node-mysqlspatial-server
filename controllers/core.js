@@ -47,7 +47,7 @@ module.exports.controller = function(app) {
     mysql2geojson.parse({
       data: rows,
       format: 'geojson',
-      callback: function(error, result) {
+      callback: function(err, result) {
         res.setHeader('Content-Type', 'application/json');
         res.send(err || result);
       }

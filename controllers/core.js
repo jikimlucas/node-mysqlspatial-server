@@ -10,10 +10,10 @@ var pool = mysql.createPool({
   database: 'Countries'
 });
 
-module.exports.controller = function (app) {
+module.exports.controller = function(app) {
   // Queries shapes interesections against the countries table return GeoJSON.
-  app.get('/countries/intersect', function (req, res) {
-    pool.getConnection(function (err, connection) {
+  app.get('/countries/intersect', function(req, res) {
+    pool.getConnection(function(err, connection) {
       var path = req.query.path;
       var type = req.query.type.toUpperCase();
       if (type === 'POLYLINE') {
@@ -31,8 +31,8 @@ module.exports.controller = function (app) {
         );
     });
   });
-  app.get('/countries/all', function (req, res) {
-    pool.getConnection(function (err, connection) {
+  app.get('/countries/all', function(req, res) {
+    pool.getConnection(function(err, connection) {
       // Set-up query.
       connection.query('SELECT name_long, pop_est, AsWKT(SHAPE) as geometry' +
         ' FROM countries where pop_est > 4000;',
@@ -47,10 +47,11 @@ module.exports.controller = function (app) {
     mysql2geojson.parse({
       data: rows,
       format: 'geojson',
-      callback: function (error, result) {
+      callback: function(error, result) {
         res.setHeader('Content-Type', 'application/json');
         res.send(error || result);
       }
     });
   }
 };
+

@@ -27,7 +27,7 @@ module.exports.controller = function(app) {
       connection.query('SELECT name_long, pop_est, AsWKT(SHAPE) as ' +
         'geometry FROM countries where st_intersects(SHAPE,GeomFromText(' +
         '"' + type + '((' + path + '))")) and pop_est > 4000;',
-        handleResult(res, connection, error, result)
+        handleResult(res, connection, err, result)
         );
     });
   });
@@ -36,20 +36,20 @@ module.exports.controller = function(app) {
       // Set-up query.
       connection.query('SELECT name_long, pop_est, AsWKT(SHAPE) as geometry' +
         ' FROM countries where pop_est > 4000;',
-        handleResult(res, connection, error, result)
+        handleResult(res, connection, err, result)
         );
     }
       );
   });
 
-  function handleResult(res, connection, error, result) {
+  function handleResult(res, connection, err, result) {
     connection.release();
     mysql2geojson.parse({
       data: rows,
       format: 'geojson',
       callback: function(error, result) {
         res.setHeader('Content-Type', 'application/json');
-        res.send(error || result);
+        res.send(err || result);
       }
     });
   }

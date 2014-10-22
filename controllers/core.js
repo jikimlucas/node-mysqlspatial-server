@@ -1,4 +1,17 @@
- // Queries shapes interesections against the countries table return GeoJSON.
+var geojson = require('../helpers/geojson');
+var jsonp = require('../helpers/jsonp');
+var mysql2geojson = require('mysql2geojson');
+var mysql = require('mysql');
+
+
+var pool = mysql.createPool({
+  host: 'YourHost',
+  user: 'UserName',
+  password: 'YourPassword',
+  database: 'Countries'
+});
+
+module.exports.controller = function(app) { // Queries shapes interesections against the countries table return GeoJSON.
   app.get('/countries/intersect', function(req, res) {
       pool.getConnection(function(err, connection) {
       var path = req.query.path;

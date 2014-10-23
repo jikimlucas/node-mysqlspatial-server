@@ -28,7 +28,7 @@ function initialize() {
   drawingManager.setMap(map);
   google.maps.event.addListener(drawingManager, 'overlaycomplete',
       function(event) {
-        google.maps.event.clearListeners(map.data, 'addfeature')
+        google.maps.event.clearListeners(map.data, 'addfeature');
         map.data.setMap(null);
         map.data = new google.maps.Data({map: map});
         map.data.addListener('addfeature', function(event) {
